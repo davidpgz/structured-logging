@@ -6,18 +6,18 @@ const jobs = ['job 3','job 5','job 7']
 
 const app = express();
 
-app.use('/jobs/:name', async function(req, res, next){
+app.use('/jobs/:name', async function(request, response){
     const logger = new SimpleLogger();
-    const jobName = req.params.name;
+    const jobName = request.params.name;
     logger.log(`Job request for ${jobName}`)
 
     try {
         const job = await fetchJob(logger, jobName)
-        res.status(200).send({ job })
+        response.status(200).send({ job })
         logger.log(`Request status 200`);
     } catch (error) {
         logger.log(error);
-        res.status(500).send({ message: "We're down..."})
+        response.status(500).send({ message: "We're down..."})
         logger.log(`Request status 500`);
     }
 });
