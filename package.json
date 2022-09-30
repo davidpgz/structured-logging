@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon",
-    "test": "ts-node ./src/test/tests.ts"
+    "start": "nodemon",
+    "test:sync": "ts-node ./src/test/sync.test.ts",
+    "test:parallel": "ts-node ./src/test/parallel.test.ts"
   },
   "keywords": [],
   "author": "",
