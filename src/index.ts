@@ -9,12 +9,12 @@ const app = express();
 
 app.use('/jobs/:name', async function(req, res, next){
     const jobName = req.params.name;
-    logger.log(`job request for ${jobName}`)
+    logger.log(`Job request for ${jobName}`)
 
     try {
         const job = await fetchJob(jobName)
         res.status(200).send({ job })
-        logger.log(`request status 200`);
+        logger.log(`Request status 200`);
     } catch (error) {
         logger.log(error);
         res.status(500).send({ message: "We're down..."})
